@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Jokes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        section {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            flex-direction: column;
+        }
+        .container {
+            /* width: 400px; */
+            height: 400px;
+            background: #000;
+            /* text-align: center; */
+            line-height: 25px;
+            color: #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            padding: 12px;
+            border-radius: 25px;
+            margin: auto 18px;
+        
+        }
+        .btn{
+            border: none;
+            color: #fff;
+            background: rgb(37, 2, 32);
+            padding: 12px;
+            font-family: 'Dancing Script', cursive;
+            border-radius: 25px;
+            transition: 0.5s;
+            font-size: 1.3rem;
+
+        }
+        .btn:hover{
+            background: crimson;
+
+        }
+        h3{
+            font-family: 'Dancing Script', cursive;
+        }
+        .jokes{
+            font-family: 'Poppins', sans-serif;
+        }
+        .fun{
+            animation: mov 1s alternate infinite;
+        }
+       @keyframes mov{
+           0%{ letter-spacing: 5px;}
+           100%{letter-spacing: 3px;}
+
+       }
+    </style>
+</head>
+
+<body>
+    <section>
+        <!-- <h1>Jay Beniwal</h1> -->
+        <div class="container">
+
+            <h3> <span class="fun" style="font-size: 2rem;color: yellow;letter-spacing: 3px;">Funny </span> Jokes <i class="fa fa-smile-o" style="font-size: 1.2rem;color: #fff;;"></i></h3>
+            <div id="joke" class="jokes">Awsome jokes is loading </div>
+            <button class="btn">Next Joke</button>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // GET https://icanhazdadjoke.com/slack
+        const joke = document.querySelector('#joke');
+        const btn= document.querySelector('.btn');
+        const genjok=()=>{
+            const setHeader={
+
+                headers:{
+                    Accept:'application/json'
+                }
+                
+            }
+            fetch('https://icanhazdadjoke.com', setHeader)
+            .then((res)=>res.json())
+            .then((data)=>{
+                joke.innerHTML=data.joke;
+            }).catch((err)=>{
+                console.log(err);
+
+            })
+        };
+
+
+
+        btn.addEventListener('click',genjok);
+        genjok();
+    </script>
+
+
+
+
+</body>
+
+</html>
